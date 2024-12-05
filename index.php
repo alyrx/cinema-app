@@ -16,7 +16,7 @@ require 'assets/db/config.db.php';
         <h1>Cinema</h1>
     </header>
     <main>
-        <section>
+        <section id="movie-grid">
             <div class="movie-card">
                 <img src="assets/images/sorri2.webp">
 

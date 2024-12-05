@@ -19,10 +19,10 @@ Uma aplicação web de reserva de bilhetes de filmes num cinema.
 
 <!-- Imgspace -->
 
-Na página principal o utilizador irá ver uma lista de filmes disponivéis.
+- Na página principal o utilizador irá ver uma lista de filmes disponivéis.
 
  <!-- Imgspace -->
 
-Ao clicar num dos filmes o utilizador é redirecionado a uma página onde consegue ver todos os lugares da sala de cinema e pode também comprar os bilhetes que deseja dos lugares ainda disponivéis.
+- Ao clicar num dos filmes o utilizador é redirecionado a uma página onde consegue ver todos os lugares da sala de cinema e pode também comprar os bilhetes que deseja dos lugares ainda disponivéis.
 
 <!-- Imgspace -->

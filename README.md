@@ -9,12 +9,16 @@ Repositório do site de Bilhetes de Cinema
 # Site Cinema
 
 ## Descrição
-
+ 
 Uma aplicação web de reserva de bilhetes de filmes num cinema.
 
 ## Link do Site
 
-X^2^
+
+xdd ==xdddd==.
+
+
+
 
 
 -   [Site Cinema](http://alyrx.infinityfreeapp.com/)

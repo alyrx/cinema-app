@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+/* Fonts */
+.open-sans-regular {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* General CSS */
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+    margin: 0;
+}
+
+main {
+    margin: 0 32px;
+    padding-top: 16px;
+}
+
+header {
+    padding: 4px 32px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+main section {
+    display: flex;
+    column-gap: 16px;
+}
+
+/* Movie Management page */
+#movie-table {
+    display: flex;
+    justify-content: center;
+    margin: 0px auto;
+}
+
+#movie-table table {
+    padding: 16px 16px;
+    
+    border-collapse: collapse;
+    text-align: center;
+    width: 66%;
+}
+
+#movie-table th {
+    border-bottom: 1px solid #333;
+}
+
+#movie-table td {
+    border-bottom: 1px solid #aaa;
+}
+
+#movie-table th,
+#movie-table td {
+    padding: 8px 16px;
+}
+
+#movie-table .movie-info {
+    background-color: inherit;
+
+    transition: all;
+    transition-duration: 75ms;
+    transition-timing-function: ease-in-out;
+}
+
+#movie-table .movie-info:hover {
+    background-color: #eee;
+}
+
+.btn-new {
+    display: inline-flex;
+
+    text-decoration: none;
+    color: #ff2173;
+
+    padding: 6px 10px;
+    outline: 2px solid #ff2c7b;
+    border-radius: 4px;
+
+    align-self: center;
+    justify-self: end;
+
+    transition: all;
+    transition-duration: 75ms;
+    transition-timing-function: ease-in-out;
+}
+
+.btn-new:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff2c7b;
+
+    padding: 6px 10px;
+    outline: 2px solid #ff2c7b;
+    border-radius: 4px;
+
+    align-self: center;
+    justify-self: end;
+}
+
+.btn-new > p {
+    margin-left: 6px
+}
+
+div.movie-card {
+    width: fit-content;
+    text-align: center;
+
+    background-color: #f1f1f1;
+
+    border: #888 solid 1px;
+    border-radius: 8px;
+
+    padding: 12px;
+
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transition: all;
+    transition-duration: 150ms;
+    transition-timing-function: ease-in-out;
+}
+
+div.movie-card:hover {
+    scale: 103%;
+}
+
+div.movie-card img {
+    width: 240px;
+    border-radius: 4px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive CSS queries */
+@media screen and (max-width: 767px) {
+    main {
+        margin: 0 8px;
+    }
+
+    #movie-table table {
+        width: 100%;
+    }
+}

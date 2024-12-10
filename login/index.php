@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../assets/db/config.db.php'; // Arquivo de conexão com a base de dados
+require '../assets/db/config.db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
@@ -14,12 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     echo $password;
     echo "\n" . $user['password'];
-    // Verificar se o utilizador existe e a palavra-passe é correta
+    // Verify if the user exists and that the password is correct
     if ($user && $password === $user['password']) {
-        // Login bem-sucedido, guardar informações na sessão
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['email'] = $user['email'];
-        header("Location: ../index.php"); // Redirecionar para o dashboard (página protegida)
+        header("Location: ../index.php");
         exit;
     } else {
         $error = "Nome de utilizador ou palavra-passe incorretos.";

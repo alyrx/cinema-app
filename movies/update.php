@@ -22,7 +22,7 @@ $query = "UPDATE movies
             duration = :duration
         WHERE id = :id";
 $stmt = $db->prepare($query);
-$stmt->bindParam(':id', $_POST['id']);
+
 $stmt->bindParam(':title', $_POST['title']);
 $stmt->bindParam(':rating', $_POST['rating']);
 $stmt->bindParam(':duration', $_POST['duration']);
@@ -31,7 +31,7 @@ $stmt->bindParam(':duration', $_POST['duration']);
 // Otherwise, return to the previous page.
 if ($msg == "") {
     $stmt->execute();
-    session_destroy();
+    if (isset($_SESSION['movie'])) unset($_SESSION['movie']);
 
     header('Location: ./index.php');
 } else {

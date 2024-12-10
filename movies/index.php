@@ -58,15 +58,25 @@ $movies = $stmt->fetchAll();
                             <td><?= $movie['duration'] . "\tmin." ?></td>
                             <td>
                                 <div class="operations-list">
+                                    <form action="./toggle.php" method="get">
+                                        <input type="hidden" name="id" value="<?= $movie['id'] ?>">
+                                        <button type="submit" class="btn-visible" title="Alternar visibilidade">
+                                            <?php if ($movie['visible'] == true): ?>
+                                                <i class="bi bi-eye-fill"></i>
+                                            <?php else: ?>
+                                                <i class="bi bi-eye-slash-fill"></i>
+                                            <?php endif; ?>
+                                        </button>
+                                    </form>
                                     <form action="./edit.php" method="get">
                                         <input type="hidden" name="id" value="<?= $movie['id'] ?>">
-                                        <button href="./store.php" type="submit" class="btn-edit">
+                                        <button type="submit" class="btn-edit" title="Editar">
                                             <i class="bi bi-pencil-fill"></i>
                                         </button>
                                     </form>
                                     <form action="./delete.php" method="get">
                                         <input type="hidden" name="id" value="<?= $movie['id'] ?>">
-                                        <button href="./store.php" type="submit" class="btn-delete">
+                                        <button type="submit" class="btn-delete" title="Eliminar">
                                             <i class="bi bi-trash-fill"></i>
                                         </button>
                                     </form>

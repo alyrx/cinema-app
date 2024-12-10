@@ -26,7 +26,7 @@ $stmt->bindParam(':duration', $_POST['duration']);
 // Otherwise, return to the previous page.
 if ($msg == "") {
     $stmt->execute();
-    session_destroy();
+    if (isset($_SESSION['movie'])) unset($_SESSION['movie']);
 
     header('Location: ./index.php');
 } else {

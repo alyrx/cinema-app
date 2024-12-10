@@ -147,46 +147,49 @@ header {
     border: 1px solid #ff2c7b;
 }
 
-.btn {
+.btn,
+.btn-edit,
+.btn-cancel,
+.btn-delete,
+.btn-submit,
+.btn-visible {
     display: inline-flex;
     align-self: center;
-    
+
+    color: inherit;
+    background-color: inherit;
+
     font-size: 16px;
     text-decoration: none;
-    color: #ff2173;
 
     padding: 6px 10px;
-    outline: 2px solid #ff2c7b;
+    outline: 2px solid;
     border: none;
     border-radius: 4px;
+
+    cursor: pointer;
 
     transition: all;
     transition-duration: 75ms;
     transition-timing-function: ease-in-out;
 }
 
+.btn {
+    color: #ff2173;
+    outline-color: #ff2c7b;
+}
+
 .btn:hover {
     color: #fff;
     background-color: #ff2c7b;
-
-    outline: 2px solid #ff2c7b;
+    outline-color: #ff2c7b;
 }
 
 .btn-submit {
-    display: inline-flex;
-    background: inherit;
-    color: inherit;
-
-    padding: 6px 10px;
     margin-left: 4px;
-    outline: 2px solid green;
-    border: none;
-    border-radius: 4px;
+    outline-color: green;
 
     font-family: inherit;
-    font-size: inherit;
-
-    cursor: pointer;
 }
 
 .btn-submit:hover {
@@ -195,45 +198,18 @@ header {
 }
 
 .btn-cancel {
-    display: inline-flex;
-    align-self: center;
-    
-    text-decoration: none;
     color: inherit;
     
-    padding: 6px 10px;
-    outline: 2px solid #aaa;
-    border: none;
-    border-radius: 4px;
-    
-    transition: all;
-    transition-duration: 75ms;
-    transition-timing-function: ease-in-out;
+    outline-color: #aaa;
 }
 
 .btn-cancel:hover {
     color: #fff;
     background-color: #aaa;
-    
-    outline: 2px solid #aaa;
 }
 
 .btn-edit {
-    display: inline-flex;
-    align-self: center;
-    
-    text-decoration: none;
-    color: inherit;
-    background-color: inherit;
-    
-    padding: 8px 10px;
-    outline: 2px solid #e9ca1b;
-    border: none;
-    border-radius: 4px;
-    
-    transition: all;
-    transition-duration: 75ms;
-    transition-timing-function: ease-in-out;
+    outline-color: #e9ca1b;
 }
 
 .btn-edit:hover {
@@ -241,25 +217,20 @@ header {
 }
 
 .btn-delete {
-    display: inline-flex;
-    align-self: center;
-    
-    text-decoration: none;
-    color: inherit;
-    background-color: inherit;
-    
-    padding: 8px 10px;
-    outline: 2px solid #e91b1b;
-    border: none;
-    border-radius: 4px;
-    
-    transition: all;
-    transition-duration: 75ms;
-    transition-timing-function: ease-in-out;
+    outline-color: #e91b1b;
 }
 
 .btn-delete:hover {
     background-color: #e91b1b;
+    color: #fff;
+}
+
+.btn-visible {
+    outline-color: #1b8ce9;
+}
+
+.btn-visible:hover {
+    background-color: #1b8ce9;
     color: #fff;
 }
 
@@ -305,6 +276,15 @@ footer {
 @media screen and (max-width: 767px) {
     main {
         margin: 0 8px;
+    }
+
+    .btn,
+    .btn-edit,
+    .btn-cancel,
+    .btn-delete,
+    .btn-submit,
+    .btn-visible {
+        font-size: 14px;
     }
 
     #content-section table {

@@ -22,7 +22,7 @@ $query = "UPDATE movies
             duration = :duration
         WHERE id = :id";
 $stmt = $db->prepare($query);
-
+$stmt->bindParam(':id', $_POST['id']);
 $stmt->bindParam(':title', $_POST['title']);
 $stmt->bindParam(':rating', $_POST['rating']);
 $stmt->bindParam(':duration', $_POST['duration']);

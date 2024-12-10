@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require 'assets/db/config.db.php';
 ?>
 
@@ -14,6 +15,9 @@ require 'assets/db/config.db.php';
 <body class="open-sans-regular">
     <header>
         <h1>Cinema</h1>
+        <div id="header-links">
+            <p><?= $_SESSION['user_id'] . " " . $_SESSION['email']?></p>
+        </div>
     </header>
     <main>
         <section id="movie-grid">

@@ -1,7 +1,7 @@
 <?php 
-// Start session to destroy unsecessary temporary variables
+// Start session to destroy temporary "movie" variable, if it exists
 session_start();
-session_destroy();
+if (isset($_SESSION['movie'])) unset($_SESSION['movie']);
 
 require '../assets/db/config.db.php';
 
@@ -23,6 +23,12 @@ $movies = $stmt->fetchAll();
 <body class="open-sans-regular">
     <header>
         <h1>Área de Gestão</h1>
+        <div id="header-links">
+            <a href="../index.php">
+                <i class="bi bi-house-fill"></i>
+                <p>Home</p>
+            </a>
+        </div>
     </header>
     <main>
         <div class="inner-header">

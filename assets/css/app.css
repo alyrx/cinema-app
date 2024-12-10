@@ -43,6 +43,17 @@ header {
     border-bottom: 1px solid #aaa;
 }
 
+#header-links a {
+    display: inline-flex;
+    color: #333;
+    padding: 6px 4px;
+    text-decoration: none;
+}
+
+#header-links a:hover {
+    color: #ff2c7b;
+}
+
 .inner-header {
     display: flex;
     justify-content: space-between;
@@ -97,10 +108,10 @@ header {
 #content-section .movie-info .operations-list {
     display: flex;
     justify-content: center;
+    column-gap: 8px;
 }
-
-#content-section .movie-info .operations-list input{
-    font-size: 14px;
+#content-section .movie-info .operations-list form {
+    width: fit-content;
 }
 
 #content-section form {
@@ -296,8 +307,14 @@ footer {
         margin: 0 8px;
     }
 
-    #movie-table table {
+    #content-section table {
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    #content-section table {
+        width: 90%;
     }
 }
 

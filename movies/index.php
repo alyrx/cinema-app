@@ -24,7 +24,7 @@ $movies = $stmt->fetchAll();
     <header>
         <h1>Área de Gestão</h1>
         <div id="header-links">
-            <a href="../index.php">
+            <a href="../index.php" class="link">
                 <i class="bi bi-house-fill"></i>
                 <p>Home</p>
             </a>

@@ -43,15 +43,42 @@ header {
     border-bottom: 1px solid #aaa;
 }
 
-#header-links a {
+#header-links a.link {
     display: inline-flex;
     color: #333;
     padding: 6px 4px;
     text-decoration: none;
 }
 
-#header-links a:hover {
+#header-links a.link:hover {
     color: #ff2c7b;
+}
+
+#header-links #user-dropdown-btn {
+    cursor: pointer;
+    column-gap: 6px;
+}
+
+#header-links #user-dropdown-menu {
+    visibility: hidden;
+    position: absolute;
+    right: 0;
+
+    padding: 6px 10px;
+    background-color: white;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+
+    -webkit-box-shadow: 0px 10px 15px -7px rgba(0,0,0,0.36);
+    -moz-box-shadow: 0px 10px 15px -7px rgba(0,0,0,0.36);
+    box-shadow: 0px 10px 15px -7px rgba(0,0,0,0.36);
+
+    translate: -20%;
+}
+
+#header-links #auth-btn {
+    display: inline-flex;
+    column-gap: 12px;
 }
 
 .inner-header {
@@ -155,9 +182,6 @@ header {
 .btn-visible {
     display: inline-flex;
     align-self: center;
-
-    color: inherit;
-    background-color: inherit;
 
     font-size: 16px;
     text-decoration: none;

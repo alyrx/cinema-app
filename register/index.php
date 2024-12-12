@@ -6,7 +6,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = hash("sha256", $_POST['password']);
 
-    $error = login($db, $email, $password);
+    register($db, $name, $email, $password);
+
+    login($db, $email, $password);
 }
 ?>
 
@@ -20,8 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <h2>Login</h2>
+    <h2>Register</h2>
     <form action="./index.php" method="POST">
+        <label for="name">Nome:</label>
+        <input type="name" name="name" id="name" required><br>
+
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required><br>
 
@@ -30,10 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <input type="submit" value="Entrar">
     </form>
-    <p>Don't have an account yet? <a href="../register/">Register</a></p>
-    <?php if (isset($error)) {
-        echo "<p style='color:red;'>$error</p>";
-    } ?>
+    <p>Have an account? <a href="../login/">Login here</a></p>
+
 </body>
 
 </html>

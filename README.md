@@ -1,7 +1,7 @@
 # cinema-app
 
 Repositório do site de Bilhetes de Cinema
-
+!([Site Cinema](assets/images/readmebanner.png)(http://alyrx.infinityfreeapp.com/))
 # [Site Cinema](http://alyrx.infinityfreeapp.com/)
 
 ## Descrição

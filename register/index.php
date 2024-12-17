@@ -1,8 +1,11 @@
 <?php
+session_start();
+
 require '../assets/db/config.db.php';
 require '../functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name = $_POST['name'];
     $email = $_POST['email'];
     $password = hash("sha256", $_POST['password']);
 

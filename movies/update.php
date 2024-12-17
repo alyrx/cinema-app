@@ -2,6 +2,9 @@
 session_start();
 require '../assets/db/config.db.php';
 include 'verify.php';
+require '../functions.php';
+
+verifyAdmin();
 
 // Store variables temporarily
 $_SESSION['movie'] = [];

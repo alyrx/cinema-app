@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require '../assets/db/config.db.php';
 require '../functions.php';
 

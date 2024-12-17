@@ -1,10 +1,7 @@
 <?php
+session_start();
 require 'assets/db/config.db.php';
 require 'functions.php';
-
-// echo '<pre>';
-// echo print_r($_SESSION);
-// echo '</pre>';
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +19,12 @@ require 'functions.php';
     <header>
         <h1>Cinema</h1>
         <div id="header-links">
-            <?php if (isset($_SESSION['name']) && isset($_SESSION['user_id'])): ?>
+            <?php if (isset($_SESSION['name']) & isset($_SESSION['utype'])): ?>
+                <?php if ($_SESSION['utype'] === "ADM"): ?>
+                    <a class="link" href="./movies/">
+                        <p>Movies</p>
+                    </a>
+                <?php endif; ?>
                 <a id="user-dropdown-btn" class="link" onclick="openDropdown()">
                     <p><?= $_SESSION['name'] ?></p>
                     <i class="bi bi-caret-down-fill"></i>

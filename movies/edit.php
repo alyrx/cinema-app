@@ -1,9 +1,12 @@
 <?php 
 session_start();
 require '../assets/db/config.db.php';
+require '../functions.php';
+
+verifyAdmin();
 
 if (!isset($_GET)) {
-    header('Location: ' . is_null($_SERVER['HTTP_REFERER']) ? './index.php' : $_SERVER['HTTP_REFERER']);
+    header('Location: ./index.php');
 }
 
 $query = "SELECT * FROM movies WHERE id = :id";

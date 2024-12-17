@@ -1,5 +1,8 @@
 <?php 
 session_start();
+require '../functions.php';
+
+verifyAdmin();
 
 // Create temporary session variables if they are non-existent or null
 if (!isset($_SESSION['movie'])) 

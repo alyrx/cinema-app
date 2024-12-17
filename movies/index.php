@@ -1,9 +1,12 @@
 <?php 
-// Start session to destroy temporary "movie" variable, if it exists
+// Start session to then verify if the user is authenticated & is admin,
+// and to destroy temporary "movie" variable, if it exists.
 session_start();
-if (isset($_SESSION['movie'])) unset($_SESSION['movie']);
-
 require '../assets/db/config.db.php';
+require '../functions.php';
+
+verifyAdmin();
+if (isset($_SESSION['movie'])) unset($_SESSION['movie']);
 
 $query = "SELECT * FROM movies";
 $stmt = $db->prepare($query);

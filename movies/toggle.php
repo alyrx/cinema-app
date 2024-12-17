@@ -1,6 +1,9 @@
 <?php
 session_start();
 require '../assets/db/config.db.php';
+require '../functions.php';
+
+verifyAdmin();
 
 // Prepare SQL query for data
 $query = "UPDATE movies 

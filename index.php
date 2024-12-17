@@ -15,6 +15,7 @@ $movies = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/85791897" type="image/x-icon">
     <title>Cinema App</title>
 
     <link rel="stylesheet" href="assets/css/app.css">
@@ -25,9 +26,18 @@ $movies = $stmt->fetchAll();
         <h1>Cinema</h1>
         <div id="header-links">
             <?php if (isset($_SESSION['name']) & isset($_SESSION['utype'])): ?>
+                <a href="./index.php" class="active link">
+                    <i class="bi bi-house-fill"></i>
+                    <p>Home</p>
+                </a>
                 <?php if ($_SESSION['utype'] === "ADM"): ?>
-                    <a class="link" href="./movies/">
-                        <p>Movies</p>
+                    <a href="./movies/index.php" class="link">
+                        <i class="bi bi-film"></i>
+                        <p>Filmes</p>
+                    </a>
+                    <a href="./users/index.php" class="link">
+                        <i class="bi bi-person-fill"></i>
+                        <p>Utilizadores</p>
                     </a>
                 <?php endif; ?>
                 <a id="user-dropdown-btn" class="link" onclick="openDropdown()">

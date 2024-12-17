@@ -8,12 +8,13 @@ function login($db, $email, $hashedPassword) {
 
     // Verify if the user exists and that the password is correct
     if ($user && $hashedPassword === $user['password']) {
-    $_SESSION['utype'] = $user['utype'];
-    $_SESSION['name'] = $user['name'];
-    header("Location: ../index.php");
-    exit;
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['utype'] = $user['utype'];
+        $_SESSION['name'] = $user['name'];
+        header("Location: ../index.php");
+        exit;
     } else {
-    return "Nome de utilizador ou palavra-passe incorretos.";
+        return "Nome de utilizador ou palavra-passe incorretos.";
     }
 }
 
@@ -36,4 +37,20 @@ function verifyAdmin() {
 
     if ($_SESSION['utype'] != "ADM")
         header('Location: ../ ');
+}
+
+function verifyUserType($utype) {
+    switch ($utype) {
+        case 'ADM':
+            return "<abbr title=\"Administrador\">ADM</abbr>";
+        break;
+            
+        case 'USR':
+            return "<abbr title=\"Utilizador\">USR</abbr>";
+        break;
+
+        default:
+            return "Unknown";
+        break;
+    }
 }

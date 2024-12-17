@@ -1,17 +1,14 @@
 <?php 
-// Start session to then verify if the user is authenticated & is admin,
-// and to destroy temporary "movie" variable, if it exists.
 session_start();
 require '../assets/db/config.db.php';
 require '../functions.php';
 
 verifyAdmin();
-if (isset($_SESSION['movie'])) unset($_SESSION['movie']);
 
-$query = "SELECT * FROM movies";
+$query = "SELECT * FROM users";
 $stmt = $db->prepare($query);
 $stmt->execute();
-$movies = $stmt->fetchAll();
+$users = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +17,7 @@ $movies = $stmt->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/85791897" type="image/x-icon">
-    <title>Filmes - Área de Gestão | Cinema App</title>
+    <title>Utilizadores - Área de Gestão | Cinema App</title>
 
     <link rel="stylesheet" href="../assets/css/app.css">
 </head>
@@ -33,11 +30,11 @@ $movies = $stmt->fetchAll();
                     <i class="bi bi-house-fill"></i>
                     <p>Home</p>
                 </a>
-                <a href="./" class="active link">
+                <a href="../movies/" class="link">
                     <i class="bi bi-film"></i>
                     <p>Filmes</p>
                 </a>
-                <a href="../users/" class="link">
+                <a href="./" class="active link">
                     <i class="bi bi-person-fill"></i>
                     <p>Utilizadores</p>
                 </a>
@@ -56,7 +53,7 @@ $movies = $stmt->fetchAll();
     </header>
     <main>
         <div class="inner-header">
-            <h2>Lista de Filmes</h2>
+            <h2>Lista de Utilizadores</h2>
             <a class="btn" href="./create.php">
                 <i class="bi bi-plus-lg"></i>
                 <p>Novo</p>
@@ -67,40 +64,30 @@ $movies = $stmt->fetchAll();
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Título</th>
-                        <th>Classificação Etária</th>
-                        <th>Duração</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Tipo de Utilizador</th>
                         <th>Operações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($movies as $movie): ?>
+                    <?php foreach ($users as $user): ?>
                         <tr class="movie-info">
-                            <td><?= $movie['id'] ?></td>
-                            <td><?= $movie['title'] ?></td>
-                            <td><?= $movie['rating'] ?></td>
-                            <td><?= $movie['duration'] . "\tmin." ?></td>
+                            <td><?= $user['id'] ?></td>
+                            <td><?= $user['name'] ?></td>
+                            <td><?= $user['email'] ?></td>
+                            <td><?= verifyUserType($user['utype']) ?></td>
                             <td>
                                 <div class="operations-list">
-                                    <form action="./toggle.php" method="get">
-                                        <input type="hidden" name="id" value="<?= $movie['id'] ?>">
-                                        <button type="submit" class="btn-visible" title="Alternar visibilidade">
-                                            <?php if ($movie['visible'] == true): ?>
-                                                <i class="bi bi-eye-fill"></i>
-                                            <?php else: ?>
-                                                <i class="bi bi-eye-slash-fill"></i>
-                                            <?php endif; ?>
-                                        </button>
-                                    </form>
                                     <form action="./edit.php" method="get">
-                                        <input type="hidden" name="id" value="<?= $movie['id'] ?>">
+                                        <input type="hidden" name="id" value="<?= $user['id'] ?>">
                                         <button type="submit" class="btn-edit" title="Editar">
                                             <i class="bi bi-pencil-fill"></i>
                                         </button>
                                     </form>
                                     <form action="./delete.php" method="get">
-                                        <input type="hidden" name="id" value="<?= $movie['id'] ?>">
-                                        <button type="submit" class="btn-delete" title="Eliminar">
+                                        <input type="hidden" name="id" value="<?= $user['id'] ?>">
+                                        <button type="submit" class="btn-delete" title="Eliminar" <?= $_SESSION['user_id'] === $user['id'] ? "disabled" : null ?>>
                                             <i class="bi bi-trash-fill"></i>
                                         </button>
                                     </form>
@@ -112,7 +99,6 @@ $movies = $stmt->fetchAll();
             </table>
         </section>    
     </main>
-    <footer></footer>
 
     <script src="../assets/js/main.js"></script>
 </body>

@@ -1,21 +1,29 @@
 <?php 
 session_start();
+require '../assets/db/config.db.php';
 require '../functions.php';
 
 verifyAdmin();
 
+if (!isset($_GET)) {
+    header('Location: ./index.php');
+}
+
+$query = "SELECT * FROM users WHERE id = :id";
+$stmt = $db->prepare($query);
+$stmt->bindParam("id", $_GET['id']);
+$stmt->execute();
+$user = $stmt->fetch();
+
 // Create temporary session variables if they are non-existent or null
-if (!isset($_SESSION['movie'])) 
-    $_SESSION['movie'] = [];
+if (!isset($_SESSION['user'])) 
+    $_SESSION['user'] = [];
 
-if (!isset($_SESSION['movie']['title'])) 
-    $_SESSION['movie']['title'] = null;
+if (!isset($_SESSION['user']['name'])) 
+    $_SESSION['user']['name'] = null;
 
-if (!isset($_SESSION['movie']['rating'])) 
-    $_SESSION['movie']['rating'] = null;
-
-if (!isset($_SESSION['movie']['duration'])) 
-    $_SESSION['movie']['duration'] = null;
+if (!isset($_SESSION['user']['email'])) 
+    $_SESSION['user']['email'] = null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +31,7 @@ if (!isset($_SESSION['movie']['duration']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/85791897" type="image/x-icon">
-    <title>Novo Filme - Área de Gestão | Cinema App</title>
+    <title>Editar Utilizador - Área de Gestão | Cinema App</title>
 
     <link rel="stylesheet" href="../assets/css/app.css">
 </head>
@@ -36,11 +44,11 @@ if (!isset($_SESSION['movie']['duration']))
                     <i class="bi bi-house-fill"></i>
                     <p>Home</p>
                 </a>
-                <a href="./" class="active link">
+                <a href="../movies/" class="link">
                     <i class="bi bi-film"></i>
                     <p>Filmes</p>
                 </a>
-                <a href="../users/" class="link">
+                <a href="./" class="active link">
                     <i class="bi bi-person-fill"></i>
                     <p>Utilizadores</p>
                 </a>
@@ -58,24 +66,24 @@ if (!isset($_SESSION['movie']['duration']))
         </div>
     </header>
     <main>
-        <h2>Criar Novo Filme</h2>
+        <h2>Editar Utilizador</h2>
         <section id="content-section">
-            <form method="post" action="./store.php" enctype="multipart/form-data">
+            <form method="post" action="./update.php" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<?= $user['id'] ?>">
                 <div>
-                    <label for="title">Título</label>
-                    <input required type="text" name="title" id="title" value="<?= $_SESSION['movie']['title'] !== "" ? $_SESSION['movie']['title'] : "" ?>">
+                    <label for="name">Nome</label>
+                    <input required type="text" name="name" id="name" value="<?= !is_null($_SESSION['user']['name']) ? $_SESSION['user']['name'] : $user['name'] ?>">
                 </div>
                 <div>
-                    <label for="rating">Classificação Etária</label>
-                    <input required type="text" name="rating" id="rating" value="<?= $_SESSION['movie']['rating'] !== "" ? $_SESSION['movie']['rating'] : "" ?>">
+                    <label for="email">Email</label>
+                    <input required type="email" name="email" id="email" value="<?= !is_null($_SESSION['user']['email']) ? $_SESSION['user']['email'] : $user['email'] ?>">
                 </div>
                 <div>
-                    <label for="duration">Duração <abbr title="Minutos">(min.)</abbr></label>
-                    <input required type="number" name="duration" id="duration" min="0" value="<?= $_SESSION['movie']['duration'] !== "" ? $_SESSION['movie']['duration'] : "" ?>">
-                </div>
-                <div>
-                    <label for="image">Imagem</label>
-                    <input type="file" name="image" id="image">
+                    <label for="utype">Tipo de Utilizador</label>
+                    <select name="utype" id="utype" <?= $_SESSION['user_id'] === $user['id'] ? "disabled" : null ?>>
+                       <option value="USR" <?= $user['utype'] === "USR" ? "selected" : "" ?>>Utilizador</option> 
+                       <option value="ADM" <?= $user['utype'] === "ADM" ? "selected" : "" ?>>Administrador</option> 
+                    </select>
                 </div>
 
                 <a href="./index.php" class="btn-cancel">
@@ -84,13 +92,13 @@ if (!isset($_SESSION['movie']['duration']))
                 </a>
                 <button type="submit" class="btn-submit">
                     <i class="bi bi-floppy2-fill"></i>
-                    <p>Guardar</p>
+                    <p>Atualizar</p>
                 </button>
             </form>
         </section>    
     </main>
     <footer></footer>
-    
+
     <script src="../assets/js/main.js"></script>
 </body>
 </html>

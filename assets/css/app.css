@@ -29,6 +29,12 @@ body {
     margin: 0;
 }
 
+button {
+    font-family: inherit;
+    color: inherit;
+    background-color: inherit;
+}
+
 main {
     margin: 0 32px;
     padding-top: 16px;
@@ -43,6 +49,11 @@ header {
     border-bottom: 1px solid #aaa;
 }
 
+#header-links {
+    display: inline-flex;
+    gap: 8px;
+}
+
 #header-links a.link {
     display: inline-flex;
     color: #333;
@@ -54,6 +65,11 @@ header {
     color: #ff2c7b;
 }
 
+#header-links a.active {
+    color: #ff2c7b;
+    border-bottom: 2px solid #ff2c7b;
+}
+
 #header-links #user-dropdown-btn {
     cursor: pointer;
     column-gap: 6px;
@@ -63,6 +79,8 @@ header {
     visibility: hidden;
     position: absolute;
     right: 0;
+    display: flex;
+    flex-direction: column;
 
     padding: 6px 10px;
     background-color: white;
@@ -73,7 +91,7 @@ header {
     -moz-box-shadow: 0px 10px 15px -7px rgba(0,0,0,0.36);
     box-shadow: 0px 10px 15px -7px rgba(0,0,0,0.36);
 
-    translate: -20%;
+    translate: -20% 50%;
 }
 
 #header-links #auth-btn {
@@ -165,13 +183,37 @@ header {
 
     padding: 6px 10px;
     font-size: 14px;
+    box-sizing: border-box;
 
     width: 100%;
 
     font-family: inherit;
 }
 
-#content-section form div input:focus {
+
+#content-section form div select {
+    border: 1px solid #333;
+    border-radius: 4px;
+    
+    background-color: inherit;
+    
+    padding: 6px 10px;
+    font-size: 14px;
+    
+    width: 100%;
+    
+    font-family: inherit;
+}
+
+
+#content-section form div select:disabled,
+#content-section form div input:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+#content-section form div input:focus,
+#content-section form div select:focus {
     outline: none;
     border: 1px solid #ff2c7b;
 }
@@ -251,6 +293,14 @@ header {
     color: #fff;
 }
 
+.btn-delete:disabled {
+    background-color: #eee;
+    color: #999;
+    outline-color: #cf4d4d;
+
+    cursor: not-allowed;
+}
+
 .btn-visible {
     outline-color: #1b8ce9;
 }
@@ -301,7 +351,29 @@ footer {
 /* Responsive CSS queries */
 @media screen and (max-width: 767px) {
     main {
-        margin: 0 8px;
+        margin: 0px 12px;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
+    }
+
+    #header-links #user-dropdown-menu {
+        translate: -5% 75%;
+    }
+
+    #content-section {
+        margin-top: 12px;
+    }
+
+    #content-section table {
+        width: 100%;
+    }
+
+    #content-section form {
+        width: 75%;
     }
 
     .btn,
@@ -311,10 +383,6 @@ footer {
     .btn-submit,
     .btn-visible {
         font-size: 14px;
-    }
-
-    #content-section table {
-        width: 100%;
     }
 }
 

@@ -91,7 +91,7 @@ header {
     -moz-box-shadow: 0px 10px 15px -7px rgba(0,0,0,0.36);
     box-shadow: 0px 10px 15px -7px rgba(0,0,0,0.36);
 
-    translate: -20% 50%;
+    translate: -20% 75%;
 }
 
 #header-links #auth-btn {
@@ -102,13 +102,6 @@ header {
 .inner-header {
     display: flex;
     justify-content: space-between;
-}
-
-#movie-grid {
-    display: flex;    
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px;
 }
 
 /* Movie Management page */
@@ -316,6 +309,39 @@ button > p {
 }
 
 /* Ticketing page */
+
+#movie-grid {
+    display: flex;    
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+#movie-grid .admin-messages {
+    background-color: #99f0e1;
+
+    border: 3px solid #1cc9cc;
+    border-radius: 8px;
+    padding: 12px 16px;
+
+    user-select: none;
+}
+
+#movie-grid .admin-messages .admin-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    color: #117e80;
+
+    font-size: 14px;
+
+    margin-bottom: 8px;
+}
+#movie-grid .admin-messages .admin-head i {
+    font-size: 16px;
+}
+
 div.movie-card {
     width: fit-content;
     text-align: center;
@@ -344,8 +370,70 @@ div.movie-card img {
 
 footer {
     position: absolute;
-    bottom: 0;
-    width: 100%;
+    bottom: 16px;
+    right: 0;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    justify-content: start;
+    gap: 16px;
+
+    background-color: #dd4c93;
+    padding: 8px;
+    border-radius: 9999px 0 0 9999px ;
+
+    overflow: hidden;
+
+    transition: all;
+    transition-duration: 400ms;
+    transition-timing-function: ease-in;
+}
+
+footer:hover {
+    width: 308px;
+
+    transition: all;
+    transition-duration: 400ms;
+    transition-timing-function: ease-out;
+}
+
+footer div {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    transition: all;
+    transition-duration: 100ms;
+    transition-timing-function: ease-in-out;
+}
+
+footer div:hover {
+    background-color: #b13d75;
+    border-radius: 9999px;
+    
+    transition: all;
+    transition-duration: 100ms;
+    transition-timing-function: ease-in-out;
+}
+
+footer div a {
+    color: #fff;
+    font-weight: bold;
+    padding-right: 8px;
+
+    width: 90px;
+
+    user-select: none;
+    text-decoration: none;
+}
+
+footer img {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 9999px;
 }
 
 /* Responsive CSS queries */

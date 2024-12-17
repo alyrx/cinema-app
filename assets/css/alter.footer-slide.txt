@@ -1,0 +1,72 @@
+======= CSS STYLE =======
+footer {
+    position: absolute;
+    bottom: 16px;
+    right: 0;
+
+    width: 60px;
+    height: 40px;
+
+    display: flex;
+    justify-content: start;
+    gap: 16px;
+
+    background-color: #dd4c93;
+    padding: 8px;
+    border-radius: 9999px 0 0 9999px ;
+
+    overflow: hidden;
+
+    transition: all;
+    transition-duration: 400ms;
+    transition-timing-function: ease-in;
+}
+
+footer:hover {
+    width: 80px;
+
+    transition: all;
+    transition-duration: 400ms;
+    transition-timing-function: ease-out;
+}
+
+footer div {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    transition: all;
+    transition-duration: 100ms;
+    transition-timing-function: ease-in-out;
+}
+
+footer div:hover {
+    background-color: #b13d75;
+    border-radius: 9999px;
+    
+    transition: all;
+    transition-duration: 100ms;
+    transition-timing-function: ease-in-out;
+}
+
+footer img {
+    width: 40px;
+    height: 40px;
+
+    z-index: 1;
+    outline: 3px solid #dd4c93;
+    border-radius: 9999px;
+}
+
+footer .img-overlay {
+    outline: none;
+
+    translate: -36px;
+    z-index: 0;
+}
+
+======= HTML =======
+<footer>
+    <img src="https://avatars.githubusercontent.com/u/85791897">
+<img src="https://avatars.githubusercontent.com/u/91906158" class="img-overlay">
+</footer>

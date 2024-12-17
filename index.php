@@ -3,7 +3,7 @@ session_start();
 require 'assets/db/config.db.php';
 require 'functions.php';
 
-$query = "SELECT * FROM movies";
+$query = "SELECT * FROM movies WHERE visible = true";
 $stmt = $db->prepare($query);
 $stmt->execute();
 $movies = $stmt->fetchAll();
@@ -11,7 +11,6 @@ $movies = $stmt->fetchAll();
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +19,6 @@ $movies = $stmt->fetchAll();
 
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
-
 <body class="open-sans-regular">
     <header>
         <h1>Cinema</h1>
@@ -66,20 +64,40 @@ $movies = $stmt->fetchAll();
     </header>
     <main>
         <section id="movie-grid">
-            <?php foreach ($movies as $movie) { 
-                if ($movie['visible']): ?>
-                    <div class="movie-card">
-                        <img src="<?= 'assets/images/movies/' . $movie['image_name'] ?>">
-                        <h3><?= $movie['title'] ?></h3>
-                        <p><?= $movie['rating'] . "\t-\t" . $movie['duration'] . "\tmin." ?></p>
+            <?php if ($movies) {
+                foreach ($movies as $movie) { ?>
+                        <div class="movie-card">
+                            <img src="<?= 'assets/images/movies/' . $movie['image_name'] ?>">
+                            <h3><?= $movie['title'] ?></h3>
+                            <p><?= $movie['rating'] . "\t-\t" . $movie['duration'] . "\tmin." ?></p>
+                        </div>
+                <?php }
+            } else { ?>
+                <?php if (isset($_SESSION['utype']) && $_SESSION['utype'] === "ADM") { ?>
+                    <div class="admin-messages">
+                        <div class="admin-head">
+                            <i class="bi bi-info-circle-fill"></i>
+                            <p>Apenas você consegue ver esta mensagem</p>
+                        </div>
+                        <p class="admin-no-movie">Não existem filmes com a visibilidade ativa. <br>Experimente adicionar filmes à base de dados ou torná-los visíveis!</p>
                     </div>
-            <?php endif;
-        } ?>
+                <?php } else { ?>
+                    <h3>Sem filmes disponíveis!</h3>
+                <?php } ?>
+            <?php } ?>
         </section>
     </main>
-    <footer></footer>
+    <footer>
+        <div>
+            <img src="https://avatars.githubusercontent.com/u/85791897">
+            <a href="https://github.com/alyrx" target="_blank">Diogo Fino</a>
+        </div>
+        <div>
+            <img src="https://avatars.githubusercontent.com/u/91906158">
+            <a href="https://github.com/ciberquaza" target="_blank">Gabriel Cardoso</a>
+        </div>
+    </footer>
 
     <script src="assets/js/main.js"></script>
 </body>
-
 </html>

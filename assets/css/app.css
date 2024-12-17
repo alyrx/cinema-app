@@ -87,8 +87,10 @@ header {
 }
 
 #movie-grid {
-    display: flex;
-    column-gap: 16px;
+    display: flex;    
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
 /* Movie Management page */

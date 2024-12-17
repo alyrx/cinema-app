@@ -36,18 +36,22 @@ if (!isset($_SESSION['movie']['duration']))
     <main>
         <h2>Criar Novo Filme</h2>
         <section id="content-section">
-            <form method="post" action="./store.php">
+            <form method="post" action="./store.php" enctype="multipart/form-data">
                 <div>
                     <label for="title">Título</label>
-                    <input type="text" name="title" id="title" value="<?= $_SESSION['movie']['title'] !== "" ? $_SESSION['movie']['title'] : "" ?>">
+                    <input required type="text" name="title" id="title" value="<?= $_SESSION['movie']['title'] !== "" ? $_SESSION['movie']['title'] : "" ?>">
                 </div>
                 <div>
                     <label for="rating">Classificação Etária</label>
-                    <input type="text" name="rating" id="rating" value="<?= $_SESSION['movie']['rating'] !== "" ? $_SESSION['movie']['rating'] : "" ?>">
+                    <input required type="text" name="rating" id="rating" value="<?= $_SESSION['movie']['rating'] !== "" ? $_SESSION['movie']['rating'] : "" ?>">
                 </div>
                 <div>
                     <label for="duration">Duração <abbr title="Minutos">(min.)</abbr></label>
-                    <input type="number" name="duration" id="duration" min="0" value="<?= $_SESSION['movie']['duration'] !== "" ? $_SESSION['movie']['duration'] : "" ?>">
+                    <input required type="number" name="duration" id="duration" min="0" value="<?= $_SESSION['movie']['duration'] !== "" ? $_SESSION['movie']['duration'] : "" ?>">
+                </div>
+                <div>
+                    <label for="image">Imagem</label>
+                    <input type="file" name="image" id="image">
                 </div>
 
                 <a href="./index.php" class="btn-cancel">

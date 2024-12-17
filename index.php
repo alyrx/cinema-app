@@ -2,6 +2,11 @@
 session_start();
 require 'assets/db/config.db.php';
 require 'functions.php';
+
+$query = "SELECT * FROM movies";
+$stmt = $db->prepare($query);
+$stmt->execute();
+$movies = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -51,12 +56,15 @@ require 'functions.php';
     </header>
     <main>
         <section id="movie-grid">
-            <div class="movie-card">
-                <img src="assets/images/sorri2.webp">
-
-                <h3>Sorri 2</h3>
-                <p>M16 - 210min</p>
-            </div>
+            <?php foreach ($movies as $movie) { 
+                if ($movie['visible']): ?>
+                    <div class="movie-card">
+                        <img src="<?= 'assets/images/movies/' . $movie['image_name'] ?>">
+                        <h3><?= $movie['title'] ?></h3>
+                        <p><?= $movie['rating'] . "\t-\t" . $movie['duration'] . "\tmin." ?></p>
+                    </div>
+            <?php endif;
+        } ?>
         </section>
     </main>
     <footer></footer>

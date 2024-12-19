@@ -308,8 +308,7 @@ button > p {
     margin-left: 6px
 }
 
-/* Ticketing page */
-
+/* Main page */
 #movie-grid {
     display: flex;    
     justify-content: center;
@@ -342,10 +341,12 @@ button > p {
     font-size: 16px;
 }
 
-div.movie-card {
+.movie-card {
     width: fit-content;
     text-align: center;
-
+    text-decoration: none;
+    
+    color: inherit;
     background-color: #f1f1f1;
 
     border: #888 solid 1px;
@@ -359,13 +360,105 @@ div.movie-card {
     transition-timing-function: ease-in-out;
 }
 
-div.movie-card:hover {
+.movie-card:hover {
     scale: 103%;
 }
 
-div.movie-card img {
+.movie-card img {
     width: 240px;
     border-radius: 4px;
+}
+
+/* Tickets page */
+#tickets-grid {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+#movie-info {
+    width: fit-content;
+    text-align: center;
+    text-decoration: none;
+    
+    color: inherit;
+
+    padding: 12px;
+}
+
+#movie-info img {
+    width: 240px;
+    border-radius: 4px;
+}
+
+#tickets-grid form.seat-row-form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 8px;
+}
+
+#tickets-grid form.seat-row-form div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0 2px;
+}
+#tickets-grid form.seat-row-form input[type="checkbox"] {
+    width: 28px;
+    height: 28px;
+    accent-color: #ff2c7b;
+}
+
+#tickets-grid form.seat-row-form .form-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    
+    font-size: 13px;
+    width: 100%;
+
+    margin-top: 8px;
+}
+
+#tickets-grid form.seat-row-form .form-bottom .form-actions{
+    margin-right: 10px;
+}
+#tickets-grid form.seat-row-form .form-bottom .seat-legend {
+    display: flex;
+    gap: 8px;
+}
+#tickets-grid form.seat-row-form .form-bottom .seat-legend input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+}
+
+#tickets-grid form.seat-row-form .form-bottom .seat-legend p {
+    font-size: 16px;
+}
+
+#tickets-grid form.seat-row-form .confirmation-input {
+    pointer-events: none;
+}
+
+#tickets-grid form.confirmation-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+#tickets-grid form.confirmation-form h3 {
+    font-size: 24px;
+}
+
+#tickets-grid form.confirmation-form .seats-list {
+    margin-bottom: 6px;
+    font-size: 18px;
 }
 
 footer {
@@ -479,11 +572,6 @@ footer img {
         width: 90%;
     }
 }
-
-/*
-* Remove arrows from input of type number 
-* Source: https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp
-*/
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

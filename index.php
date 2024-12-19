@@ -15,9 +15,10 @@ $movies = $stmt->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/85791897" type="image/x-icon">
+    
     <title>Cinema App</title>
-
-    <link rel="stylesheet" href="assets/css/app.css">
+    
+    <link rel="stylesheet" href="./assets/css/app.css">
 </head>
 <body class="open-sans-regular">
     <header>
@@ -66,11 +67,11 @@ $movies = $stmt->fetchAll();
         <section id="movie-grid">
             <?php if ($movies) {
                 foreach ($movies as $movie) { ?>
-                        <div class="movie-card">
+                        <a href="./tickets/?movie_id=<?= $movie['id'] ?>" class="movie-card">
                             <img src="<?= 'assets/images/movies/' . $movie['image_name'] ?>">
                             <h3><?= $movie['title'] ?></h3>
                             <p><?= $movie['rating'] . "\t-\t" . $movie['duration'] . "\tmin." ?></p>
-                        </div>
+                        </a>
                 <?php }
             } else { ?>
                 <?php if (isset($_SESSION['utype']) && $_SESSION['utype'] === "ADM") { ?>
@@ -87,16 +88,7 @@ $movies = $stmt->fetchAll();
             <?php } ?>
         </section>
     </main>
-    <footer>
-        <div>
-            <img src="https://avatars.githubusercontent.com/u/85791897">
-            <a href="https://github.com/alyrx" target="_blank">Diogo Fino</a>
-        </div>
-        <div>
-            <img src="https://avatars.githubusercontent.com/u/91906158">
-            <a href="https://github.com/ciberquaza" target="_blank">Gabriel Cardoso</a>
-        </div>
-    </footer>
+    <?php include "./assets/partials/footer.html"; ?>
 
     <script src="assets/js/main.js"></script>
 </body>

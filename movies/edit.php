@@ -30,14 +30,10 @@ if (!isset($_SESSION['movie']['duration']))
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/85791897" type="image/x-icon">
-    <title>Editar Filme - Área de Gestão | Cinema App</title>
 
-    <link rel="stylesheet" href="../assets/css/app.css">
-</head>
+<?php include "../assets/partials/head.html"; ?>
+<title>Editar Filme - Área de Gestão | Cinema App</title>
+
 <body class="open-sans-regular">
     <header>
         <h1>Área de Gestão</h1>
@@ -101,16 +97,7 @@ if (!isset($_SESSION['movie']['duration']))
             </form>
         </section>    
     </main>
-    <footer>
-        <div>
-            <img src="https://avatars.githubusercontent.com/u/85791897">
-            <a href="https://github.com/alyrx" target="_blank">Diogo Fino</a>
-        </div>
-        <div>
-            <img src="https://avatars.githubusercontent.com/u/91906158">
-            <a href="https://github.com/ciberquaza" target="_blank">Gabriel Cardoso</a>
-        </div>
-    </footer>
+    <?php include "../assets/partials/footer.html"; ?>
 
     <script src="../assets/js/main.js"></script>
 </body>

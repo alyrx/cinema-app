@@ -16,13 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="pt">
+    
 <link rel="stylesheet" href="../assets/css/auth.css">
-<?php require_once "../assets/partials/head.html"; ?>
-<title>Register - Cinema App</title>
+<?php include "../assets/partials/head.html"; ?>
+<title>Registar | Cinema App</title>
 
 <body class="open-sans-regular">
     <main>
-        <h2 class="orbitron-italic-900">Register</h2>
+        <h2 class="orbitron-italic-900">Registar</h2>
         <form action="./index.php" method="POST">
             <div>
                 <label for="name">Nome</label>
@@ -45,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
     </main>
 
-    <?php require_once "../assets/partials/footer.html"; ?>
+    <?php include "../assets/partials/footer.html"; ?>
 </body>
 
 </html>

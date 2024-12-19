@@ -13,9 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="pt">
+
+<?php include "../assets/partials/head.html"; ?>
 <link rel="stylesheet" href="../assets/css/auth.css">
-<?php require_once "../assets/partials/head.html"; ?>
-<title>Login - Cinema App</title>
+<title>Login | Cinema App</title>
 
 <body class="open-sans-regular">
     <main>
@@ -40,6 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p id="register-link">Don't have an account yet? <a href="../register/">Register</a></p>
         </form>
     </main>
-    <?php require_once "../assets/partials/footer.html"; ?>
+    <?php include "../assets/partials/footer.html"; ?>
 </body>
 </html>

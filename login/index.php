@@ -6,21 +6,17 @@ require '../functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
-    $password = hash("sha256", $_POST['password']);
+    $password = encryptPassword($_POST['password']);
 
     $error = login($db, $email, $password);
 }
 ?>
 <!DOCTYPE html>
 <html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/85791897" type="image/x-icon">
-    <title>Login</title>
+<link rel="stylesheet" href="../assets/css/auth.css">
+<?php require_once "../assets/partials/head.html"; ?>
+<title>Login - Cinema App</title>
 
-    <link rel="stylesheet" href="../assets/css/auth.css">
-</head>
 <body class="open-sans-regular">
     <main>
         <h2 class="orbitron-italic-900">Login</h2>
@@ -44,5 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p id="register-link">Don't have an account yet? <a href="../register/">Register</a></p>
         </form>
     </main>
+    <?php require_once "../assets/partials/footer.html"; ?>
 </body>
 </html>

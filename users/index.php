@@ -39,6 +39,11 @@ $users = $stmt->fetchAll();
                     <i class="bi bi-caret-down-fill"></i>
                 </a>
                 <div id="user-dropdown-menu" onmouseleave="closeDropdown()">
+                    <a href="../tickets/list/" class="link">
+                        <i class="bi bi-ticket-detailed-fill"></i>
+                        <p>Bilhetes</p>
+                    </a>
+                    <hr>
                     <a href="../logout/" class="link">
                         <i class="bi bi-box-arrow-left"></i>
                         <p>Logout</p>

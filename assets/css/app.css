@@ -44,9 +44,23 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
     padding: 8px 32px;
     border-bottom: 1px solid #aaa;
+}
+
+.banner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    width: 100%;
+}
+
+.banner {
+    border-radius: 10px;
+    width: 95%;
 }
 
 #header-links {
@@ -87,11 +101,16 @@ header {
     border: 1px solid #aaa;
     border-radius: 4px;
 
-    -webkit-box-shadow: 0px 10px 15px -7px rgba(0,0,0,0.36);
-    -moz-box-shadow: 0px 10px 15px -7px rgba(0,0,0,0.36);
-    box-shadow: 0px 10px 15px -7px rgba(0,0,0,0.36);
+    -webkit-box-shadow: 0px 10px 15px -7px rgba(0, 0, 0, 0.36);
+    -moz-box-shadow: 0px 10px 15px -7px rgba(0, 0, 0, 0.36);
+    box-shadow: 0px 10px 15px -7px rgba(0, 0, 0, 0.36);
 
-    translate: -20% 75%;
+    translate: -20% 50%;
+}
+#header-links #user-dropdown-menu hr {
+    margin: 4px 0;
+    border: 0;
+    border-top: 1px solid #aaa;
 }
 
 #header-links #auth-btn {
@@ -114,7 +133,7 @@ header {
 
 #content-section table {
     padding: 16px 16px;
-    
+
     border-collapse: collapse;
     text-align: center;
     width: 66%;
@@ -183,21 +202,19 @@ header {
     font-family: inherit;
 }
 
-
 #content-section form div select {
     border: 1px solid #333;
     border-radius: 4px;
-    
+
     background-color: inherit;
-    
+
     padding: 6px 10px;
     font-size: 14px;
-    
+
     width: 100%;
-    
+
     font-family: inherit;
 }
-
 
 #content-section form div select:disabled,
 #content-section form div input:disabled {
@@ -260,7 +277,7 @@ header {
 
 .btn-cancel {
     color: inherit;
-    
+
     outline-color: #aaa;
 }
 
@@ -305,15 +322,17 @@ header {
 
 a > p,
 button > p {
-    margin-left: 6px
+    margin-left: 6px;
 }
 
 /* Main page */
 #movie-grid {
-    display: flex;    
+    display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 16px;
+
+    margin-top: -96px;
 }
 
 #movie-grid .admin-messages {
@@ -345,7 +364,7 @@ button > p {
     width: fit-content;
     text-align: center;
     text-decoration: none;
-    
+
     color: inherit;
     background-color: #f1f1f1;
 
@@ -382,7 +401,7 @@ button > p {
     width: fit-content;
     text-align: center;
     text-decoration: none;
-    
+
     color: inherit;
 
     padding: 12px;
@@ -417,21 +436,25 @@ button > p {
     display: flex;
     justify-content: space-between;
     align-items: start;
-    
+
     font-size: 13px;
     width: 100%;
 
     margin-top: 8px;
 }
 
-#tickets-grid form.seat-row-form .form-bottom .form-actions{
+#tickets-grid form.seat-row-form .form-bottom .form-actions {
     margin-right: 10px;
 }
 #tickets-grid form.seat-row-form .form-bottom .seat-legend {
     display: flex;
     gap: 8px;
 }
-#tickets-grid form.seat-row-form .form-bottom .seat-legend input[type="checkbox"] {
+#tickets-grid
+    form.seat-row-form
+    .form-bottom
+    .seat-legend
+    input[type="checkbox"] {
     width: 16px;
     height: 16px;
     pointer-events: none;
@@ -475,7 +498,7 @@ footer {
 
     background-color: #dd4c93;
     padding: 8px;
-    border-radius: 9999px 0 0 9999px ;
+    border-radius: 9999px 0 0 9999px;
 
     overflow: hidden;
 
@@ -505,7 +528,7 @@ footer div {
 footer div:hover {
     background-color: #b13d75;
     border-radius: 9999px;
-    
+
     transition: all;
     transition-duration: 100ms;
     transition-timing-function: ease-in-out;
@@ -581,7 +604,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
     appearance: textfield;
     -moz-appearance: textfield;
 }

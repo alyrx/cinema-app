@@ -35,4 +35,4 @@ insert into movies
 values (null, "Sorri 2", "M16", 210, "6761bc0156c9c_sorri2.webp", 1);
 
 insert into users 
-values (null, "Alyrx", "alyrx1@proton.me", "ADM", "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225"); # Password = 123456789, Hash = sha256
+values (null, "admin", "admin@cinema.app", "ADM", "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225"); # Password = 123456789, Hash = sha256

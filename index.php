@@ -11,15 +11,17 @@ $movies = $stmt->fetchAll();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/85791897" type="image/x-icon">
-    
+
     <title>Cinema App</title>
-    
+
     <link rel="stylesheet" href="./assets/css/app.css">
 </head>
+
 <body class="open-sans-regular">
     <header>
         <h1>Cinema</h1>
@@ -44,6 +46,11 @@ $movies = $stmt->fetchAll();
                     <i class="bi bi-caret-down-fill"></i>
                 </a>
                 <div id="user-dropdown-menu" onmouseleave="closeDropdown()">
+                    <a href="./tickets/list/" class="link">
+                        <i class="bi bi-ticket-detailed-fill"></i>
+                        <p>Bilhetes</p>
+                    </a>
+                    <hr>
                     <a href="./logout/" class="link">
                         <i class="bi bi-box-arrow-left"></i>
                         <p>Logout</p>
@@ -64,14 +71,17 @@ $movies = $stmt->fetchAll();
         </div>
     </header>
     <main>
+        <div class="banner-container">
+            <img src="assets/images/MainPageBanner.png" alt="Banner" class="banner">
+        </div>
         <section id="movie-grid">
             <?php if ($movies) {
                 foreach ($movies as $movie) { ?>
-                        <a href="./tickets/?movie_id=<?= $movie['id'] ?>" class="movie-card">
-                            <img src="<?= 'assets/images/movies/' . $movie['image_name'] ?>">
-                            <h3><?= $movie['title'] ?></h3>
-                            <p><?= $movie['rating'] . "\t-\t" . $movie['duration'] . "\tmin." ?></p>
-                        </a>
+                    <a href="./tickets/?movie_id=<?= $movie['id'] ?>" class="movie-card">
+                        <img src="<?= 'assets/images/movies/' . $movie['image_name'] ?>">
+                        <h3><?= $movie['title'] ?></h3>
+                        <p><?= $movie['rating'] . "\t-\t" . $movie['duration'] . "\tmin." ?></p>
+                    </a>
                 <?php }
             } else { ?>
                 <?php if (isset($_SESSION['utype']) && $_SESSION['utype'] === "ADM") { ?>
@@ -92,4 +102,5 @@ $movies = $stmt->fetchAll();
 
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>

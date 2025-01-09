@@ -3,8 +3,6 @@ session_start();
 require '../../assets/db/config.db.php';
 require '../../functions.php';
 
-verifyAdmin();
-
 $query = "SELECT t.*, m.title FROM tickets AS t
         INNER JOIN movies AS m ON t.movie_id = m.id 
         WHERE user_id = ?";

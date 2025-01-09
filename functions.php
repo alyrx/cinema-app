@@ -39,6 +39,13 @@ function verifyAdmin() {
         header('Location: ../ ');
 }
 
+function verifyUser($id) {
+    verifyAuth();
+
+    if ($_SESSION['user_id'] != $id)
+        header('Location: ../ ');
+}
+
 function verifyUserType($utype) {
     switch ($utype) {
         case 'ADM':

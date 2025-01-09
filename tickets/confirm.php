@@ -98,71 +98,76 @@ $tickets = $stmt->fetchAll();
         <section id="tickets-grid">
             <div id="movie-info">
                 <img src="<?= '../assets/images/movies/' . $movie['image_name'] ?>">
-                <h3><?= $movie['title'] ?></h3>
-                <p><?= $movie['rating'] . "\t-\t" . $movie['duration'] . "\tmin." ?></p>
+                <div>
+                    <h3><?= $movie['title'] ?></h3>
+                    <p><?= $movie['rating'] . "\t-\t" . $movie['duration'] . "\tmin." ?></p>
+                    <p id="movie-synopsis"><?= $movie['synopsis'] !== "" ? $movie['synopsis'] : "<span>Não existem uma sinopse deste filme ainda!</span>" ?></p>
+                </div>
             </div>
-            <form class="seat-row-form">
-                <input type="hidden" name="movie_id" value="<?= $movieID ?>">
-                <?php for ($i=1; $i <= 5; $i++) { ?>
-                    <div class="seat-row">
-                        <h3>Fila <?= $i ?></h3>
-                        <?php for ($j=1; $j <= 15; $j++) { ?>
-                            <div> 
-                                <input type="checkbox" 
-                                    name="seats[]" 
-                                    class="confirmation-input"
-                                    <?php // Check if the seat was chosen to be reserved
-                                    if (in_array($i . '-' . $j, $seats)) {
-                                        echo "checked";
-                                    } else {
-                                        for ($k = 0; $k < count($tickets); $k++){ 
-                                            // Check if the seat is already taken
-                                            echo in_array($i . '-' . $j, $tickets[$k]) ? "checked disabled" : null;
-                                        }
-                                    } ?>>
+            <div id="ticket-confirmation-container">
+                <form class="seat-row-form">
+                    <input type="hidden" name="movie_id" value="<?= $movieID ?>">
+                    <?php for ($i=1; $i <= 5; $i++) { ?>
+                        <div class="seat-row">
+                            <h3>Fila <?= $i ?></h3>
+                            <?php for ($j=1; $j <= 15; $j++) { ?>
+                                <div> 
+                                    <input type="checkbox" 
+                                        name="seats[]" 
+                                        class="confirmation-input"
+                                        <?php // Check if the seat was chosen to be reserved
+                                        if (in_array($i . '-' . $j, $seats)) {
+                                            echo "checked";
+                                        } else {
+                                            for ($k = 0; $k < count($tickets); $k++){ 
+                                                // Check if the seat is already taken
+                                                echo in_array($i . '-' . $j, $tickets[$k]) ? "checked disabled" : null;
+                                            }
+                                        } ?>>
+                                </div>
+                            <?php } ?> 
+                        </div>
+                    <?php } ?>
+
+                    <div class="form-bottom">
+                        <div class="seat-legend">
+                            <p><strong>Legenda</strong></p>
+                            <div>
+                                <input type="checkbox" checked>
+                                <label>Selecionado</label>
                             </div>
-                        <?php } ?> 
-                    </div>
-                <?php } ?>
-
-                <div class="form-bottom">
-                    <div class="seat-legend">
-                        <p><strong>Legenda</strong></p>
-                        <div>
-                            <input type="checkbox" checked>
-                            <label>Selecionado</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" checked disabled>
-                            <label>Reservado</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" >
-                            <label>Disponível</label>
+                            <div>
+                                <input type="checkbox" checked disabled>
+                                <label>Reservado</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" >
+                                <label>Disponível</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
-            <form action="./store.php" method="post" class="confirmation-form">
-                <h3>A sua reserva:</h3>
-                <input type="hidden" name="movie_id" value="<?= $movieID ?>">
-                <?php foreach ($seats as $seat) { ?>
-                    <input type="hidden" name="seats[]" value="<?= $seat ?>">
-                <?php } ?>
-                <div class="seats-list">
-                    <?php foreach ($seats as $seat): 
-                        $seat = explode('-', $seat);?>
-                        <p>Fila <?= $seat[0] ?>, Assento <?= $seat[1] ?></p>
-                    <?php endforeach; ?>
-                </div>
-
-                <div class="form-actions">
-                    <button type="submit" class="btn-submit">
-                        <i class="bi bi-check-lg"></i>
-                        <p>Confirmar Reserva</p>
-                    </button>
-                </div>
-            </form>
+                </form>
+                <form action="./store.php" method="post" class="confirmation-form">
+                    <h3>A sua reserva:</h3>
+                    <input type="hidden" name="movie_id" value="<?= $movieID ?>">
+                    <?php foreach ($seats as $seat) { ?>
+                        <input type="hidden" name="seats[]" value="<?= $seat ?>">
+                    <?php } ?>
+                    <div class="seats-list">
+                        <?php foreach ($seats as $seat): 
+                            $seat = explode('-', $seat);?>
+                            <p>Fila <?= $seat[0] ?>, Assento <?= $seat[1] ?></p>
+                        <?php endforeach; ?>
+                    </div>
+            
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit">
+                            <i class="bi bi-check-lg"></i>
+                            <p>Confirmar Reserva</p>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </section>
     </main>
     <?php include "../assets/partials/footer.html"; ?>

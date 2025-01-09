@@ -74,8 +74,15 @@ header {
     padding: 6px 4px;
     text-decoration: none;
 }
+#content-section td a.link {
+    display: inline-flex;
+    color: #333;
+    padding: 6px 4px;
+    text-decoration: underline;
+}
 
-#header-links a.link:hover {
+#header-links a.link:hover,
+#content-section td a.link:hover {
     color: #ff2c7b;
 }
 
@@ -338,7 +345,7 @@ button > p {
     
     gap: 16px;
     padding: 0 24px;
-
+    margin-bottom: 60px;
     margin-top: -96px;
 }
 
@@ -398,31 +405,28 @@ button > p {
 /* Tickets page */
 #tickets-grid {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
     flex-wrap: wrap;
-    gap: 16px;
+
+    row-gap: 32px;
+    margin-top: 24px;
+    margin-bottom: 60px;
 }
 
-#movie-info {
-    width: fit-content;
-    text-align: center;
-    text-decoration: none;
-
-    color: inherit;
-
-    padding: 12px;
-}
-
-#movie-info img {
-    width: 240px;
-    border-radius: 4px;
+#tickets-grid #ticket-confirmation-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
 }
 
 #tickets-grid form.seat-row-form {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-content: center;
     gap: 8px;
 }
@@ -457,11 +461,7 @@ button > p {
     display: flex;
     gap: 8px;
 }
-#tickets-grid
-    form.seat-row-form
-    .form-bottom
-    .seat-legend
-    input[type="checkbox"] {
+#tickets-grid form.seat-row-form .form-bottom .seat-legend input[type="checkbox"] {
     width: 16px;
     height: 16px;
     pointer-events: none;
@@ -491,6 +491,47 @@ button > p {
     font-size: 18px;
 }
 
+#movie-info {
+    display: flex;
+    flex-direction: row;
+
+    width: fit-content;
+    text-decoration: none;
+    gap: 20px;
+
+    color: inherit;
+
+    padding: 12px;
+}
+
+#movie-info div h3 {
+    font-size: 28px;
+}
+
+#movie-info div p {
+    font-size: 16px;
+}
+
+#movie-info div #movie-synopsis {
+    max-width: 768px;
+    text-align: justify;
+    font-size: 18px;
+
+    padding-top: 16px;
+}
+
+#movie-info div #movie-synopsis span {
+    color: #777;
+    font-size: 16px;
+}
+
+#movie-info img {
+    width: 240px;
+    height: min-content;
+    border-radius: 4px;
+}
+
+/* Footer */
 footer {
     position: fixed;
     bottom: 16px;

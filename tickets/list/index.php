@@ -77,7 +77,7 @@ $tickets = $stmt->fetchAll();
                     <?php foreach ($tickets as $ticket): ?>
                         <tr class="movie-info">
                             <td><?= $ticket['id'] ?></td>
-                            <td><?= $ticket['title'] ?></td>
+                            <td><a href="<?= "../index.php?movie_id=" . $ticket['movie_id'] ?>" class="link"><?= $ticket['title'] ?></a></td>
                             <td><?= $ticket['seat'] ?></td>
                             <td>
                                 <div class="operations-list">

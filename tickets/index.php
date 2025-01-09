@@ -88,8 +88,11 @@ $tickets = $stmt->fetchAll();
         <section id="tickets-grid">
             <div id="movie-info">
                 <img src="<?= '../assets/images/movies/' . $movie['image_name'] ?>">
-                <h3><?= $movie['title'] ?></h3>
-                <p><?= $movie['rating'] . "\t-\t" . $movie['duration'] . "\tmin." ?></p>
+                <div>
+                    <h3><?= $movie['title'] ?></h3>
+                    <p><?= $movie['rating'] . "\t-\t" . $movie['duration'] . "\tmin." ?></p>
+                    <p id="movie-synopsis"><?= $movie['synopsis'] !== "" ? $movie['synopsis'] : "<span>Não existem uma sinopse deste filme ainda!</span>" ?></p>
+                </div>
             </div>
             <form action="./confirm.php" method="post" class="seat-row-form">
                 <input type="hidden" name="movie_id" value="<?= $movieID ?>">

@@ -11,6 +11,9 @@ if (!isset($_SESSION['movie']))
 if (!isset($_SESSION['movie']['title'])) 
     $_SESSION['movie']['title'] = null;
 
+if (!isset($_SESSION['movie']['synopsis'])) 
+    $_SESSION['movie']['synopsis'] = null;
+
 if (!isset($_SESSION['movie']['rating'])) 
     $_SESSION['movie']['rating'] = null;
 
@@ -65,6 +68,10 @@ if (!isset($_SESSION['movie']['duration']))
                 <div>
                     <label for="title">Título</label>
                     <input required type="text" name="title" id="title" value="<?= $_SESSION['movie']['title'] !== "" ? $_SESSION['movie']['title'] : "" ?>">
+                </div>
+                <div>
+                    <label for="synopsis">Sinopse do Filme</label>
+                    <textarea name="synopsis" id="synopsis"><?= $_SESSION['movie']['synopsis'] !== "" ? $_SESSION['movie']['synopsis'] : "" ?></textarea>
                 </div>
                 <div>
                     <label for="rating">Classificação Etária</label>

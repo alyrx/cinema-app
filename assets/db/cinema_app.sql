@@ -6,6 +6,7 @@ use cinema_app;
 create table movies (
 	id int(10) auto_increment primary key,
     title varchar(128) not null,
+    synposis text not null,
     rating varchar(6) not null,
     duration int(4) not null,
     image_name varchar(256) not null,

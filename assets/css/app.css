@@ -189,7 +189,8 @@ header {
     margin-bottom: 4px;
 }
 
-#content-section form div input {
+#content-section form div input,
+#content-section form div textarea {
     border: 1px solid #333;
     border-radius: 4px;
 
@@ -200,6 +201,10 @@ header {
     width: 100%;
 
     font-family: inherit;
+}
+#content-section form div textarea {
+    resize: vertical;
+    height: 192px;
 }
 
 #content-section form div select {

@@ -7,6 +7,14 @@ function verifyTitle($title) {
     }
 }
 
+function verifySynopsis($synopsis) {
+    if ($synopsis == "") {
+        return "<li>O campo \"sinopse\" não pode estar vazio!</li>";
+    } else {
+        return;
+    }
+}
+
 function verifyRating($rating) {
     if ($rating == "") {
         return "<li>O campo \"classificação\" não pode estar vazio!</li>";

@@ -1,7 +1,7 @@
-<?php 
+<?php
 session_start();
-require '../assets/db/config.db.php';
-require '../functions.php';
+require '../assets/db/config.db.php' ;
+require '../functions.php' ;
 
 verifyAdmin();
 
@@ -9,24 +9,27 @@ if (!isset($_GET)) {
     header('Location: ./index.php');
 }
 
-$query = "SELECT * FROM movies WHERE id = :id";
-$stmt = $db->prepare($query);
+$query="SELECT * FROM movies WHERE id = :id" ;
+$stmt=$db->prepare($query);
 $stmt->bindParam("id", $_GET['id']);
 $stmt->execute();
 $movie = $stmt->fetch();
 
 // Create temporary session variables if they are non-existent or null
-if (!isset($_SESSION['movie'])) 
-    $_SESSION['movie'] = [];
+if (!isset($_SESSION['movie']))
+$_SESSION['movie'] = [];
 
-if (!isset($_SESSION['movie']['title'])) 
-    $_SESSION['movie']['title'] = null;
+if (!isset($_SESSION['movie']['title']))
+$_SESSION['movie']['title'] = null;
 
-if (!isset($_SESSION['movie']['rating'])) 
-    $_SESSION['movie']['rating'] = null;
+if (!isset($_SESSION['movie']['synopsis']))
+$_SESSION['movie']['synopsis'] = null;
 
-if (!isset($_SESSION['movie']['duration'])) 
-    $_SESSION['movie']['duration'] = null;
+if (!isset($_SESSION['movie']['rating']))
+$_SESSION['movie']['rating'] = null;
+
+if (!isset($_SESSION['movie']['duration']))
+$_SESSION['movie']['duration'] = null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,6 +82,10 @@ if (!isset($_SESSION['movie']['duration']))
                     <input required type="text" name="title" id="title" value="<?= !is_null($_SESSION['movie']['title']) ? $_SESSION['movie']['title'] : $movie['title'] ?>">
                 </div>
                 <div>
+                    <label for="synopsis">Sinopse do Filme</label>
+                    <textarea required type="text" name="synopsis" id="synopsis"><?= !is_null($_SESSION['movie']['synopsis']) ? $_SESSION['movie']['synopsis'] : $movie['synopsis'] ?></textarea>
+                </div>
+                <div>
                     <label for="rating">Classificação Etária</label>
                     <input required type="text" name="rating" id="rating" value="<?= !is_null($_SESSION['movie']['rating']) ? $_SESSION['movie']['rating'] : $movie['rating'] ?>">
                 </div>
@@ -100,10 +107,11 @@ if (!isset($_SESSION['movie']['duration']))
                     <p>Atualizar</p>
                 </button>
             </form>
-        </section>    
+        </section>
     </main>
     <?php include "../assets/partials/footer.html"; ?>
 
     <script src="../assets/js/main.js"></script>
 </body>
+
 </html>
